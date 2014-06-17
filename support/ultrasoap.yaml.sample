@@ -1,0 +1,11 @@
+# Copy this file into ~/.ultrasoap
+# Edit credentials and debug options accordingly to your needs
+# Default values are commented out
+username    : 'johndoe'
+password    : 'secret'
+#log_file    : 'ultrasoap.log'
+#log         : false
+#log_level   : 'error'
+#test_wsdl   : 'https://testapi.ultradns.com/UltraDNS_WS/v01?wsdl'
+#prod_wsdl   : 'https://ultra-api.ultradns.com/UltraDNS_WS/v01?wsdl'
+#transactions: false
