@@ -51,17 +51,21 @@ module UltraSOAP
       @logdest = Settings['logfile'] || Client.logdest
 
       @logger = Logger.new(@logdest)
-      @logging = Settings['logging'] || Client.logging
+      
+      logging = Settings['logging'] || Client.logging
+
+      log_lev = Settings['log_level'] || Client.log_level
 
       begin
+        # For some reason, if I use the instance variable, Savon.client doesn't work properly
 
         @client = Savon.client do
           wsdl ultra_wsdl
           env_namespace 'soapenv'
           wsse_auth(username, password)
           element_form_default :unqualified
-          log Settings['logging']
-          log_level Settings['log_level'].to_sym
+          log logging
+          log_level log_lev.to_sym
           pretty_print_xml true
         end
       rescue Exception => e  
