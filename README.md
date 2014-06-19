@@ -60,6 +60,10 @@ Now you are ready to send the call:
 probes_response = dl.send_request :get_probes_of_pool_record, probes_message
 ```
 
+For those who didn't get it, the method *send_request* takes 2 parameters:
+1) The symbol of the function to call.
+2) The message containing the parameters for the function, as stated in the reference.
+
 The response is an XML Nodeset, therefore you can perform XPath queries and everything:
 
 ```ruby
