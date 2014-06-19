@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email         = 'gabriel.sambarino@gmail.com'
   s.files         = `git ls-files`.split($/)
   s.homepage      = 'https://github.com/chrean/ultrasoap-ruby'
-  s.license       = "mit"
+  s.license       = "MIT"
   s.require_paths = ["lib"]
   s.required_ruby_version = '~> 2.0'
 end
