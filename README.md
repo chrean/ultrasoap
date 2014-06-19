@@ -12,12 +12,28 @@ Just run:
 gem install ultrasoap
 ```
 
-Then create the file ~/.ultrasoap, which has to be in **YAML format**, with your Neustar credentials, like this:
+Then create the file ~/.ultrasoap, which has to be in **YAML format**.
+Fill the file with your Neustar credentials, like this:
 
-```
+```yaml
 username: johndoe
 password: secret
 ```
+
+You can tune other settings as well, though only credentials are mandatory.
+
+Example:
+
+```yaml
+log_file    : 'ultrasoap.log'
+log         : false
+log_level   : 'error'
+test_wsdl   : 'https://testapi.ultradns.com/UltraDNS_WS/v01?wsdl'
+prod_wsdl   : 'https://ultra-api.ultradns.com/UltraDNS_WS/v01?wsdl'
+transactions: false
+```
+
+So basically you can tune log_file's path, logging level, test and production WSDL, and whether or not your client will use transactions.
 
 Usage
 -----
