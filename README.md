@@ -12,7 +12,7 @@ Just run:
 gem install ultrasoap
 ```
 
-Then create the file ~/.ultrasoap with your Neustar credentials, like this:
+Then create the file ~/.ultrasoap, which has to be in **YAML format**, with your Neustar credentials, like this:
 
 ```
 username: johndoe
