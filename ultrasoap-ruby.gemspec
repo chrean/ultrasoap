@@ -8,4 +8,5 @@ Gem::Specification.new do |s|
   s.homepage      = 'https://github.com/chrean/ultrasoap-ruby'
   s.license       = "apache"
   s.require_paths = ["lib"]
+  s.required_ruby_version = '~> 2.0'
 end
