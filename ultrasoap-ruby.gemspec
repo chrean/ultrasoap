@@ -2,6 +2,7 @@ Gem::Specification.new do |s|
   s.name          = 'ultrasoap-ruby'
   s.version       = '0.0.3'
   s.summary       = "Simple Ruby client library for UltraDNS SOAP API"
+  s.description   = "Connect to Neustar's UltraDNS SOAP API"
   s.authors       = ["Gabriel Sambarino"]
   s.email         = 'gabriel.sambarino@gmail.com'
   s.files         = `git ls-files`.split($/)
