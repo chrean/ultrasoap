@@ -25,12 +25,13 @@ module UltraSOAP
       attr_accessor :test_wsdl
       attr_accessor :prod_wsdl
       attr_accessor :environment
+      attr_accessor :use_transactions
     end
 
     # Instance variables
     attr_accessor :logging
     attr_accessor :loglevel
-    attr_accessor :use_transactions
+    attr_accessor :transactions
 
     # Constructor
     def initialize()
@@ -47,7 +48,7 @@ module UltraSOAP
 
       # Setting up parameter values, if provided. If not, defaults are assumed
 
-      @use_transactions = Settings['use_transactions'] || Client.use_transactions
+      @transactions = Settings['use_transactions'] || Client.use_transactions
       @logdest = Settings['logfile'] || Client.logdest
 
       @logger = Logger.new(@logdest)
@@ -81,7 +82,7 @@ module UltraSOAP
     # * message: the message hash
     def send_request(method, message, strip_namespaces=true)
       # If the client is using transactions, append the transaction id to the message hash
-      if @use_transactions == true
+      if @transactions == true
         transaction_hash = { :transaction_id => @transaction_id }
         message.merge(transaction_hash)
       end
