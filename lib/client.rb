@@ -140,10 +140,10 @@ module UltraSOAP
     # Helper method to retrieve load balancing pools data
     # Parameters:
     # - zone (don't forget the trailing dot)
-    def get_lb_pools(zone)
+    def get_lb_pools(zone, pool_type='SB')
       message = {
         :zone_name    => zone,
-        :lb_pool_type => 'SB'
+        :lb_pool_type => pool_type
       }
 
       begin
@@ -172,7 +172,7 @@ module UltraSOAP
 
     # LOOKUP methods
 
-    def lookup_pool_type(pt_code)
+    def lookup_pool_type(pt_code='SB')
       case pt_code.to_s
       when 'SB'
         'SiteBacker'
@@ -185,7 +185,7 @@ module UltraSOAP
       end
     end
 
-    def lookup_response_method(rm_code)
+    def lookup_response_method(rm_code='FX')
       case rm_code.to_s
       when 'FX'
         'Fixed'

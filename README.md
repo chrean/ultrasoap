@@ -104,3 +104,31 @@ dl.rollback_transaction
 ```
 
 As soon as the transactions support will be thoroughly tested and will reach a stable status, I'll update the documentation with some example.
+
+Wrapper functions
+-----------------
+
+Although is possible to call all functions via the generic *send_request* method, I've started to implement some builtin function, which wraps the API functions themselves and should facilitate their invoking.
+
+These functions require less writing and can be used without having to pre-form a message hash. They just need a couple of parameters.
+
+All functions return a Nokogiri::Nodeset, just like send_request.
+
+The current version supports the following functions:
+
+```ruby
+# Enumerate all Load Balancing pools for the required zone
+# Parameters:
+# - zone      => the name of the zone, *including* the trailing dot
+# - pool_type => the type of the pool. Defaults to SB => SiteBacker . See the reference manual to learn more.
+
+get_lb_pools(zone, pool_type='SB')
+
+# Returns all the records for a certain load balancing pool
+# Parameters:
+# - pool_id => the ID of the pool
+get_pool_records(pool_id)
+
+```
+
+More functions are on the way (lookup functions and other stuff).
