@@ -15,6 +15,18 @@ Just run:
 gem install ultrasoap
 ```
 
+Add it to your Gemfile:
+
+```
+gem 'ultrasoap'
+```
+
+Finally, require it into your source code:
+
+```
+require 'ultrasoap'
+```
+
 Then create the file ~/.ultrasoap, which has to be in **YAML format**.
 Fill the file with your Neustar credentials, like this:
 
