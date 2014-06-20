@@ -3,9 +3,11 @@ ultrasoap-ruby
 
 Ruby gem to interact with UltraDNS SOAP API.
 This gem is still in a very early version, so don't expect it to do miracles.
-It just works, basically. Well, at least since v0.1.0.
-Earlier versions had some dependency problem. Shame on me and my inexperience with gems. :(
-I plan to extend it, in the future, adding wrappers for the most important UltraDNS functions.
+Code must also be polished and refactored, but it's a continuous work in progress, so check out for the (currently frequent) updates.
+
+It just works, basically. Well, at least since v0.1.0: earlier versions, in fact, had some dependency problem. Shame on me and my inexperience with gems. :(
+
+I plan to extend and improve this gem in the future, e.g. adding wrappers for the most important UltraDNS functions.
 
 Install
 -------
