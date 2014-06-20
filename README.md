@@ -96,11 +96,11 @@ There is also a rudimentary and experimental support for transactions.
 Once you have instantiated the client, you can invoke the following methods:
 
 ```ruby
-cl.start_transaction
+dl.start_transaction
 
-cl.commit_transaction
+dl.commit_transaction
 
-cl.rollback_transaction
+dl.rollback_transaction
 ```
 
 As soon as the transactions support will be thoroughly tested and will reach a stable status, I'll update the documentation with some example.
