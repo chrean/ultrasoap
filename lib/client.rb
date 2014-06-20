@@ -5,7 +5,6 @@ module UltraSOAP
 
   class Client
 
-    # Class variables
     @logger
 
     @logdest            = './ultrasoap.log'
@@ -17,6 +16,7 @@ module UltraSOAP
     @transaction_id     = nil
     @use_transactions   = false
 
+    # Class variables
     class << self
       attr_accessor :logdest
       attr_accessor :logging
@@ -25,12 +25,12 @@ module UltraSOAP
       attr_accessor :test_wsdl
       attr_accessor :prod_wsdl
       attr_accessor :environment
-      attr_accessor :use_transactions
     end
 
     # Instance variables
     attr_accessor :logging
     attr_accessor :loglevel
+    attr_accessor :use_transactions
 
     # Constructor
     def initialize()
