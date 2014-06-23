@@ -195,6 +195,21 @@ module UltraSOAP
       end
     end
 
+    # Returns notifications for a pool
+    # Parameters:
+    # - poolID: string
+    def get_notifications_of_pool(pool_id)
+      message = {
+        :pool_id => pool_id
+      }
+
+      begin
+        return self.send_request :get_notifications_of_pool, message
+      rescue Exception => e
+        @logger.error("Error while retrieving notifications for pool ID #{pool_id}: #{e.message}")
+      end
+    end
+
     # LOOKUP methods
 
     def lookup_pool_type(pt_code='SB')
