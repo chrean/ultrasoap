@@ -7,6 +7,7 @@ module UltraSOAP
 
     @logger
 
+    # Would like to find a better place for defaults, rather than here
     @logdest            = './ultrasoap.log'
     @logging            = false
     @log_level          = 'error'
@@ -54,12 +55,9 @@ module UltraSOAP
       @logger = Logger.new(@logdest)
       
       logging = Settings['logging'] || Client.logging
-
       log_lev = Settings['log_level'] || Client.log_level
 
       begin
-        # For some reason, if I use the instance variable, Savon.client doesn't work properly
-
         @client = Savon.client do
           wsdl ultra_wsdl
           env_namespace 'soapenv'
@@ -92,6 +90,8 @@ module UltraSOAP
         return Nokogiri::XML(@response.to_xml).remove_namespaces!
       rescue Exception => e
         @logger.error("Error in ultrasoap.send_request: " + e.message)
+        # Rollback current transaction, if any
+        transaction_rollback unless @transaction_id == nil
         return nil
       end
     end
@@ -157,7 +157,7 @@ module UltraSOAP
 
     # Helper method to retrieve Pool's records
     # Parameters:
-    # - poolID
+    # - pool_id
     def get_pool_records(pool_id)
       message = {
         :pool_id => pool_id.to_s
@@ -167,6 +167,31 @@ module UltraSOAP
         return self.send_request :get_pool_records, message
       rescue Exception => e
         @logger.error("Error while retrieving Pool Records for the Pool ID #{pool_id.to_s}: #{e.message}")
+      end
+    end
+
+    # Returns a list of probes for the given pool record
+    # Parameters:
+    # - poolRecordID
+    # - SortBy, possible values are: 
+    #   PROBEID
+    #   PROBEDATA
+    #   PROBEFAILSPECS
+    #   ACTIVE
+    #   POOLID
+    #   AGENTFAILSPECS
+    #   PROBEWEIGHT
+    #   BLEID
+    def get_probes_of_pool_record(pool_record_id, sort_by="PROBEDATA")
+      message = {
+        :pool_record_ID => pool_record_id.to_s,
+        :sort_by        => sort_by
+      }
+
+      begin
+        return self.send_request :get_probes_of_pool_record, message
+      rescue Exception => e
+        @logger.error("Error while retrieving probes for pool record ID #{pool_record_id.to_s}: #{e.message}")
       end
     end
 
