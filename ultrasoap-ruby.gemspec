@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'ultrasoap'
-  s.version       = '0.1.3'
+  s.version       = '0.1.4'
   s.summary       = "Simple Ruby client library for UltraDNS SOAP API"
   s.description   = "Connect to Neustar's UltraDNS SOAP API. FKA ultrasoap-ruby. Any feedback or contribution is appreciated."
   s.authors       = ["Gabriel Sambarino"]
