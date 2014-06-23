@@ -186,7 +186,7 @@ module UltraSOAP
     # - ttl
     def update_pool_record(pool_record_id, pool_record_ip, action="Normal", priority="1", fail_over_delay="0", ttl="60")
       message = {
-        :transaction_ID   => @transaction_id.nil? ? "" : @transaction_id,
+        :transaction_ID   => (@transaction_id.nil? ? "" : @transaction_id),
         :pool_record_ID   => pool_record_id,
         :parent_pool_id   => "",
         :child_pool_id    => "",
@@ -206,7 +206,7 @@ module UltraSOAP
       rescue Exception => e
         @logger.error("Error while updating pool record ID #{pool_record_id}: #{e.message}")
       end
-    }
+    end 
 
     # Returns a list of probes for the given pool record
     # Parameters:
