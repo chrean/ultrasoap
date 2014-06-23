@@ -114,6 +114,8 @@ These functions require less writing and can be used without having to pre-form 
 
 All functions return a Nokogiri::Nodeset, just like send_request.
 
+For a detailed description on response formats, take a look at the NUS API XML SOAP API guide by Neustar.
+
 The current version supports the following functions:
 
 ```ruby
@@ -128,6 +130,41 @@ get_lb_pools(zone, pool_type='SB')
 # Parameters:
 # - pool_id => the ID of the pool
 get_pool_records(pool_id)
+
+# Update data for a Pool Record
+# Returns true if the update was successful, false otherwise
+# Parameters:
+# - pool_record_id
+# - pool_record_ip
+# - action:
+#   - "ForceActive-Test"
+#   - "ForceActive-NoTest"
+#   - "ForceFail-Test"
+#   - "ForceFail-NoTest"
+#   - "Normal"
+# - priority
+# - fail_over_delay
+# - ttl
+update_pool_record(pool_record_id, pool_record_ip, action="Normal", priority="1", fail_over_delay="0", ttl="60")
+
+# Returns a list of probes for the given pool record
+# Parameters:
+# - poolRecordID
+# - SortBy, possible values are: 
+#   PROBEID
+#   PROBEDATA
+#   PROBEFAILSPECS
+#   ACTIVE
+#   POOLID
+#   AGENTFAILSPECS
+#   PROBEWEIGHT
+#   BLEID
+get_probes_of_pool_record(pool_record_id, sort_by="PROBEDATA")
+
+# Returns notifications for a pool
+# Parameters:
+# - poolID: string
+get_notifications_of_pool(pool_id)
 
 ```
 
