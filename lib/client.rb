@@ -170,6 +170,44 @@ module UltraSOAP
       end
     end
 
+    # Update data for a Pool Record
+    # Returns true if the update was successful, false otherwise
+    # Parameters:
+    # - pool_record_id
+    # - pool_record_ip
+    # - action:
+    #   - "ForceActive-Test"
+    #   - "ForceActive-NoTest"
+    #   - "ForceFail-Test"
+    #   - "ForceFail-NoTest"
+    #   - "Normal"
+    # - priority
+    # - fail_over_delay
+    # - ttl
+    def update_pool_record(pool_record_id, pool_record_ip, action="Normal", priority="1", fail_over_delay="0", ttl="60")
+      message = {
+        :transaction_ID   => @transaction_id.nil? ? "" : @transaction_id,
+        :pool_record_ID   => pool_record_id,
+        :parent_pool_id   => "",
+        :child_pool_id    => "",
+        :points_to        => pool_record_ip,
+        :priority         => priority,
+        :fail_over_delay  => fail_over_delay,
+        :ttl              => ttl,
+        :weight           => "",  # Weight is only for Traffic Controller
+        :mode             => action,
+        :threshold        => "1"
+      }
+
+      begin 
+        response =  self.send_request :update_pool_record, message
+        result = Nokogiri::XML(pool_record_update.to_xml).remove_namespaces!.xpath("//result/text()").to_s 
+        return (result == "Successful" ? true : false)
+      rescue Exception => e
+        @logger.error("Error while updating pool record ID #{pool_record_id}: #{e.message}")
+      end
+    }
+
     # Returns a list of probes for the given pool record
     # Parameters:
     # - poolRecordID
