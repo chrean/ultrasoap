@@ -137,6 +137,21 @@ module UltraSOAP
       end
     end
 
+    ##################
+    # Wrapper methods
+    ##################
+
+    def network_status
+      begin
+        response = self.send_request :get_neustar_network_status, ''
+        Nokogiri::XML(response.to_xml).remove_namespaces!.xpath("//NeustarNetworkStatus/text()").to_s
+      rescue Exception => e
+        @logger.error("Error in retrieving Neustar's network status: #{e.message}")
+        nil
+      end
+    end
+
+
     # Helper method to retrieve load balancing pools data
     # Parameters:
     # - zone (don't forget the trailing dot)
