@@ -119,6 +119,11 @@ For a detailed description on response formats, take a look at the NUS API XML S
 The current version supports the following functions:
 
 ```ruby
+
+# Returns the current state of the Neustar network
+# Return values: 'Good' if everything's ok, other values otherwise
+network_status()
+
 # Enumerate all Load Balancing pools for the required zone
 # Parameters:
 # - zone      => the name of the zone, *including* the trailing dot
