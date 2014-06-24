@@ -121,7 +121,7 @@ The current version supports the following functions:
 ```ruby
 
 # Returns the current state of the Neustar network
-# Return values: 'Good' if everything's ok, other values otherwise
+# Return values: 'Good' if everything's ok, other values otherwise, nil in case of exceptions
 network_status()
 
 # Enumerate all Load Balancing pools for the required zone
