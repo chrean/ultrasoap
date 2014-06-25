@@ -37,7 +37,7 @@ module UltraSOAP
     # Constructor
     def initialize()
       # Exits if username or password aren't specified.
-      return nil unless !(Settings.username.nil? or Settings.password.nil?)
+      return nil unless !(Settings['username'].nil? or Settings['password'].nil?)
 
       username = Settings.username
       password = Settings.password
