@@ -1,3 +1,5 @@
+## Note: this repository and related gem are not maintained anymore.
+
 ultrasoap-ruby
 ==============
 
