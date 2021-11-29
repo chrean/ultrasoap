@@ -1,5 +1,7 @@
 ## Note: this repository and related gem are not maintained anymore.
 
+Gem can be found here: https://rubygems.org/gems/ultrasoap
+
 ultrasoap-ruby
 ==============
 
